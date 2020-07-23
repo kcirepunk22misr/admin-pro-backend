@@ -12,11 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Rutas
-app.get('/', (req, res) => {
-	res.send({
-		ok: true,
-	});
-});
+app.use('/api/usuarios', require('./routes/usuario.routes'));
+app.use('/api/login', require('./routes/auth.routes'));
 
 // Base de datos
 dbConnection()
