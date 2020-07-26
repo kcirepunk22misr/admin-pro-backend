@@ -19,6 +19,9 @@ app.use('/api/medicos', require('./routes/medico.routes'));
 app.use('/api/todo', require('./routes/busquedas.routes'));
 app.use('/api/upload', require('./routes/upload.routes'));
 
+// Directorio Publico
+app.use(express.static(__dirname + '/public'));
+
 // Base de datos
 dbConnection()
 	.then(() => {
