@@ -14,6 +14,10 @@ app.use(express.json());
 // Rutas
 app.use('/api/usuarios', require('./routes/usuario.routes'));
 app.use('/api/login', require('./routes/auth.routes'));
+app.use('/api/hospitales', require('./routes/hospital.routes'));
+app.use('/api/medicos', require('./routes/medico.routes'));
+app.use('/api/todo', require('./routes/busquedas.routes'));
+app.use('/api/upload', require('./routes/upload.routes'));
 
 // Base de datos
 dbConnection()
