@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const { generarJWT } = require('../helpers/jwt');
 const Usuario = require('../models/Usuario');
 const { googleVerify } = require('../helpers/google-verify');
-const { findOne } = require('../models/Usuario');
+const { findOne, estimatedDocumentCount } = require('../models/Usuario');
 
 const login = async (req, res = response) => {
 	const { email, password } = req.body;
@@ -84,7 +84,17 @@ const googleSignIn = async (req, res) => {
 	}
 };
 
+const renewToken = async (req, res = response) => {
+	const uid = req.uid;
+	const token = await generarJWT(uid);
+	res.json({
+		ok: false,
+		token,
+	});
+};
+
 module.exports = {
 	login,
 	googleSignIn,
+	renewToken,
 };
